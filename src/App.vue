@@ -16,6 +16,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <script>
 import axios from 'axios';
+window.csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 export default {
   data() {
     return {
