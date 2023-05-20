@@ -4,21 +4,44 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+  <div>
+    <div v-for="post in posts" v-bind:key="post.id">
+      <h2>{{ post.product_name }}</h2>
+      <p>{{ post.product_price }}</p>
     </div>
-  </header>
+  </div>
 
   <RouterView />
 </template>
+
+<script>
+import axios from 'axios';
+export default {
+  data() {
+    return {
+      posts: [],
+    };
+  },
+
+  methods: {
+    async getData() {
+      try {
+        const response = await axios.get(
+          "http://laravel-vue.test/api/category"
+        );
+        console.log(response.data);
+        // this.posts = response.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+
+  created() {
+    this.getData();
+  },
+};
+</script>
 
 <style scoped>
 header {
