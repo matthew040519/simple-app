@@ -11,7 +11,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Category</a>
+        <a class="nav-link" href="/category">Category</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/ticket">Ticket</a>

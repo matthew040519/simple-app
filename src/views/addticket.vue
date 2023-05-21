@@ -30,24 +30,36 @@ export default {
 
     <div class="container">
       <div class="row mt-lg-5">
-        <div class="col-md-4">
+        <div class="col-md-3">
 
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="card" style="width: 100%;">
             <div class="card-body">
-              <h5 class="card-title">Add Category</h5>
+              <h5 class="card-title">Add Ticket</h5>
               <form @submit.prevent="createCategory">
                 <div class="form-group">
-                  <label>Category</label>
-                  <input type="text" placeholder="Category" class="form-control" id="category_name" v-model="formData.category_name">
+                  <label>Name</label>
+                  <input type="text" class="form-control" id="category_name" v-model="formData.name">
+                </div>
+                <div class="form-group">
+                  <label>Email Address</label>
+                  <input type="text" class="form-control" id="category_name" v-model="formData.email">
+                </div>
+                <div class="form-group">
+                  <label>Ticket Category</label>
+                  <input type="text" class="form-control" id="category_name" v-model="formData.category">
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <input type="text" class="form-control" id="category_name" v-model="formData.description">
                 </div>
                 <button class="btn btn-primary btn-sm">Save</button>
               </form>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
 
         </div>
       </div>

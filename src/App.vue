@@ -19,21 +19,11 @@ export default {
   },
 
   methods: {
-    async getData() {
-      try {
-        const response = await axios.get(
-          "http://laravel-vue.test/api/category"
-        );
-        console.log(response.data);
-        // this.posts = response.data;
-      } catch (error) {
-        console.log(error);
-      }
-    },
+    
   },
 
   created() {
-    this.getData();
+    
   },
 };
 </script>
