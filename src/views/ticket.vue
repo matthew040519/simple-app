@@ -13,11 +13,13 @@
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Ticket Category</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Time</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="tickets in ticket" v-bind:key="tickets.id">
+                        <td>{{ tickets.id  }}</td>
                         <td>{{ tickets.name  }}</td>
                         <td>{{ tickets.email  }}</td>
                         <td>{{ tickets.category_name  }}</td>

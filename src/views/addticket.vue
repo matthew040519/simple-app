@@ -4,24 +4,41 @@
 import axios from 'axios';
 const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 export default {
-  name: 'createCategory',
+  name: 'createTicket',
   data() {
     return {
       formData: {
-        category_name: ''
-      }
+        name: '',
+        email: '',
+        category_id: '',
+        description: ''
+      },
+      category: []
     };
   },
 
   methods: {
 
-    createCategory()
+    getData()
+    {
+        axios.get(
+          "http://laravel-vue.test/api/category")
+          .then(response => this.category = response.data.data)
+          .catch(error => console.log(error));
+    },
+
+    createTicket()
     {
         axios.post(
-          "http://laravel-vue.test/api/category", this.formData)
-          .then(response => this.$router.push("/category"))
+          "http://laravel-vue.test/api/ticket", this.formData)
+          .then(response => this.$router.push("/ticket"))
           .catch(error => console.log(error));
     }
+
+  },
+
+  created() {
+    this.getData();
   },
 };
 </script>
@@ -37,22 +54,25 @@ export default {
           <div class="card" style="width: 100%;">
             <div class="card-body">
               <h5 class="card-title">Add Ticket</h5>
-              <form @submit.prevent="createCategory">
+              <form @submit.prevent="createTicket">
                 <div class="form-group">
                   <label>Name</label>
-                  <input type="text" class="form-control" id="category_name" v-model="formData.name">
+                  <input type="text" class="form-control" id="name" v-model="formData.name">
                 </div>
                 <div class="form-group">
                   <label>Email Address</label>
-                  <input type="text" class="form-control" id="category_name" v-model="formData.email">
+                  <input type="email" class="form-control" id="email" v-model="formData.email">
                 </div>
                 <div class="form-group">
                   <label>Ticket Category</label>
-                  <input type="text" class="form-control" id="category_name" v-model="formData.category">
+                  <select class="form-control" id="category_id" v-model="formData.category_id">
+                    <option disabled selected>choose your category...</option>
+                    <option v-for="categorys in category" v-bind:key="categorys.id" :value="categorys.id">{{ categorys.category_name }}</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label>Description</label>
-                  <input type="text" class="form-control" id="category_name" v-model="formData.description">
+                  <input type="text" class="form-control" id="description" v-model="formData.description">
                 </div>
                 <button class="btn btn-primary btn-sm">Save</button>
               </form>
